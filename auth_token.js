@@ -1,1 +1,1 @@
-var gotty_auth_token = '';
+var gotty_auth_token = 'yhiblog:yhiblog';
