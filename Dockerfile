@@ -12,7 +12,16 @@ RUN apt update && apt install -y bash vim screen net-tools \
 curl software-properties-common libnss-wrapper gettext-base unzip wget \
 python ffmpeg
 
-RUN mkdir -p $HOME/aria2 && mkdir -p $HOME/config
+RUN mkdir -p $HOME/config
+
+
+WORKDIR $HOME
+
+RUN curl -o aria2.tar.gz -L "https://github.com/king567/Aria2-static-build-128-thread/releases/download/v1.34.0/aria2-v1.34.0-static-build-128-thread.tar.gz"
+RUN tar xzf aria2.tar.gz
+RUN mv aria2-* aria2
+RUN rm -f aria2.tar.gz
+
 ENV PATH=$HOME/aria2:$PATH
 
 WORKDIR $HOME/aria2
