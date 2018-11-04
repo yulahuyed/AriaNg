@@ -10,7 +10,7 @@ ENV RCLONE_CONFIG=$HOME/config/rclone.conf
 
 RUN apt update && apt install -y bash vim screen net-tools \
 curl software-properties-common libnss-wrapper gettext-base unzip wget \
-python-software-properties python
+python
 
 RUN add-apt-repository ppa:jonathonf/ffmpeg-3
 
