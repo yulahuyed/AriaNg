@@ -39,6 +39,12 @@ then
   curl -L -o $RCLONE_CONFIG "${RCONFIG}"
 fi
 
+if [ "${URL}" ]
+then
+  sed -i "s/localhost/${URL}/g" aria-ng-*.min.js
+  sed -i "s/6800/80/g" aria-ng-*.min.js
+fi
+
 mkdir /tmp/Downloads
 touch aria2.session
 touch /tmp/dht.dat
