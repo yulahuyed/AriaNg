@@ -41,7 +41,7 @@ fi
 
 if [ "${URL}" ]
 then
-  if echo "${URL}" | grep https
+  if echo "${URL}" | grep -qi https
   then
     sed -i "s/6800/80/g" $HOME/aria2/js/aria-ng-*.min.js
   else
