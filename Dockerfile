@@ -36,7 +36,7 @@ RUN rm -f gotty.tar.gz
 
 RUN apt-get clean all
 
-ADD ./* $HOME/aria2/
+ADD . $HOME/aria2/
 
 RUN mv gotty.js hterm.js $HOME/aria2/js
 
@@ -46,4 +46,4 @@ USER 1000
 
 EXPOSE 8080
 
-CMD ["$HOME/aria2/run.sh"]
+CMD ["/home/user/aria2/run.sh"]
