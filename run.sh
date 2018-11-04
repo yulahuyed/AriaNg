@@ -41,8 +41,8 @@ fi
 
 if [ "${URL}" ]
 then
-  sed -i "s/localhost/${URL}/g" aria-ng-*.min.js
-  sed -i "s/6800/80/g" aria-ng-*.min.js
+  sed -i "s/localhost/${URL}/g" $HOME/aria2/js/aria-ng-*.min.js
+  sed -i "s/6800/80/g" $HOME/aria2/js/aria-ng-*.min.js
 fi
 
 mkdir /tmp/Downloads
