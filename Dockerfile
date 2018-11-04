@@ -4,7 +4,7 @@ MAINTAINER yhiblog <shui.azurewebsites.net>
 
 ENV GOTTY_USER "yhiblog"
 ENV GOTTY_PASS "yhiblog"
-ENV HOME "/home/user/"
+ENV HOME "/home/user"
 ENV RCLONE_CONFIG=$HOME/config/rclone.conf
 
 
@@ -36,7 +36,7 @@ RUN rm -f gotty.tar.gz
 
 RUN apt-get clean all
 
-ADD . $HOME/aria2/
+ADD ./* $HOME/aria2/
 
 RUN mv gotty.js hterm.js $HOME/aria2/js
 
