@@ -41,8 +41,14 @@ fi
 
 if [ "${URL}" ]
 then
-  sed -i "s/localhost/${URL}/g" $HOME/aria2/js/aria-ng-*.min.js
-  sed -i "s/6800/80/g" $HOME/aria2/js/aria-ng-*.min.js
+  if echo "${URL}" | grep https
+  then
+    sed -i "s/6800/80/g" $HOME/aria2/js/aria-ng-*.min.js
+  else
+    sed -i "s/6800/443/g" $HOME/aria2/js/aria-ng-*.min.js
+    sed -i 's/protocol:"http"/protocol:"https"/' $HOME/aria2/js/aria-ng-*.min.js
+  fi
+  sed -i "s/localhost/$(echo $URL | sed -e 's/http[s]*://g' -e 's#/##g')/g" $HOME/aria2/js/aria-ng-*.min.js
 fi
 
 mkdir /tmp/Downloads
