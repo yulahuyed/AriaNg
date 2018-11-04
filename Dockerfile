@@ -12,7 +12,7 @@ RUN apt update && apt install -y bash vim screen net-tools \
 curl software-properties-common libnss-wrapper gettext-base unzip wget \
 python
 
-RUN add-apt-repository ppa:jonathonf/ffmpeg-3
+RUN add-apt-repository ppa:jonathonf/ffmpeg-4
 
 RUN apt-get update && apt-get install ffmpeg libav-tools x264 x265
 
