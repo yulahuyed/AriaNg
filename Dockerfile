@@ -40,7 +40,7 @@ RUN curl -o AriaNg.zip -L "https://github.com/mayswind/AriaNg/releases/download/
 RUN unzip AriaNg.zip
 RUN rm -f AriaNg.zip
 
-RUN curl -o gotty.tar.gz -L  https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz
+RUN curl -o gotty.tar.gz -L https://github.com/yudai/gotty/releases/download/v2.0.0-alpha.3/gotty_2.0.0-alpha.3_linux_amd64.tar.gz
 RUN tar xzf gotty.tar.gz
 RUN rm -f gotty.tar.gz
 
@@ -53,7 +53,8 @@ RUN apt-get clean all
 
 ADD . $HOME/aria2/
 
-RUN mv gotty.js hterm.js $HOME/aria2/js
+RUN mv gotty.js hterm.js gotty-bundle.js $HOME/aria2/js
+RUN mv xterm_customize.css xterm.css index.css $HOME/aria2/css
 
 RUN chmod -R 777 /home
 
