@@ -34,8 +34,6 @@ RUN curl -o gotty.tar.gz -L  https://github.com/yudai/gotty/releases/download/v1
 RUN tar xzf gotty.tar.gz
 RUN rm -f gotty.tar.gz
 
-RUN adduser --uid 1000 --gid 0 --home /home/user/ --shell /bin/bash user
-RUN echo "user:$SSHPASS" | chpasswd
 RUN apt-get clean all
 
 ADD . $HOME/aria2/
