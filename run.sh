@@ -54,8 +54,9 @@ fi
 mkdir /tmp/Downloads
 touch aria2.session
 touch /tmp/dht.dat
-nohup ./gotty --port 7900 -c "${GOTTY_USER}:${GOTTY_PASS}" -w bash >/dev/null 2>&1 &
 
 nohup ./aria2c --conf-path=aria2.conf >/dev/null 2>&1 &
 
-./caddy -conf Caddyfile
+nohup ./caddy -conf Caddyfile >/dev/null 2>&1 &
+
+./gotty --port 8080 -c "${GOTTY_USER}:${GOTTY_PASS}" -w bash
