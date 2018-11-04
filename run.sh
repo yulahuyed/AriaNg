@@ -61,4 +61,11 @@ nohup ./aria2c --conf-path=aria2.conf >/dev/null 2>&1 &
 
 nohup ./caddy -conf Caddyfile >/dev/null 2>&1 &
 
+if [ "$GOTTY_PASS" ]
+then
+./gotty --port 7900 -c "${GOTTY_USER}:${GOTTY_PASS}" -w bash
+sed -i "s/yhiblog:yhiblog/${GOTTY_USER}:${GOTTY_PASS}/g" auth_token.js
+else
 ./gotty --port 7900 -w bash
+sed -i 's/yhiblog:yhiblog//g' auth_token.js
+fi
