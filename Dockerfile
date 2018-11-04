@@ -4,13 +4,14 @@ MAINTAINER yhiblog <shui.azurewebsites.net>
 
 ENV GOTTY_USER "yhiblog"
 ENV GOTTY_PASS "yhiblog"
+ENV SSHPASS "yhiblog"
 ENV HOME "/home/user"
 ENV RCLONE_CONFIG=$HOME/config/rclone.conf
 
 
 RUN apt update && apt install -y bash vim screen net-tools \
 curl software-properties-common libnss-wrapper gettext-base unzip wget \
-python ffmpeg
+python ffmpeg sudo
 
 RUN mkdir -p $HOME/config
 
@@ -43,6 +44,11 @@ RUN curl -o gotty.tar.gz -L  https://github.com/yudai/gotty/releases/download/v1
 RUN tar xzf gotty.tar.gz
 RUN rm -f gotty.tar.gz
 
+RUN adduser --uid 1000 --gid 0 --home /home/user/ --shell /bin/bash user
+RUN echo "user:$SSHPASS" | chpasswd
+RUN echo "user ALL=(ALL:ALL) ALL" >> /etc/sudoers.d/user
+RUN echo "user ALL=(ALL:ALL) ALL" >> /etc/sudoers
+RUN chmod 0440 /etc/sudoers.d/user
 RUN apt-get clean all
 
 ADD . $HOME/aria2/
