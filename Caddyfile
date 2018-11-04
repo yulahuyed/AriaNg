@@ -1,0 +1,8 @@
+0.0.0.0:8080 {
+  proxy /jsonrpc localhost:6800
+  proxy /gotty 127.0.0.1:7900 {
+  without /gotty
+  websocket
+  transparent
+ }
+}
