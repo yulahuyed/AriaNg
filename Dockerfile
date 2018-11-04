@@ -50,4 +50,6 @@ RUN chmod -R 777 /home
 
 USER 1000
 
+EXPOSE 8080
+
 CMD ["$HOME/aria2/run.sh"]
