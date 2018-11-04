@@ -55,8 +55,12 @@ mkdir /tmp/Downloads
 touch aria2.session
 touch /tmp/dht.dat
 
+start_gotty(){
+./gotty --port 7900 -c "${GOTTY_USER}:${GOTTY_PASS}" -w bash
+}
+
 nohup ./aria2c --conf-path=aria2.conf >/dev/null 2>&1 &
 
-nohup ./caddy -conf Caddyfile >/dev/null 2>&1 &
+nohup start_gotty >/dev/null 2>&1 &
 
-./gotty --port 8080 -c "${GOTTY_USER}:${GOTTY_PASS}" -w bash
+./caddy -conf Caddyfile
