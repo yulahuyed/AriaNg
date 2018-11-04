@@ -7,6 +7,7 @@ ENV GOTTY_PASS "yhiblog"
 ENV HOME "/home/user/"
 ENV RCLONE_CONFIG=$HOME/config/rclone.conf
 
+
 RUN apt update && apt install -y bash vim screen net-tools \
 curl software-properties-common libnss-wrapper gettext-base unzip wget \
 python-software-properties python
@@ -16,6 +17,7 @@ RUN add-apt-repository ppa:jonathonf/ffmpeg-3
 RUN apt-get update && apt-get install ffmpeg libav-tools x264 x265
 
 RUN mkdir -p $HOME/aria2 && mkdir -p $HOME/config
+ENV PATH=$HOME/aria2:$PATH
 
 WORKDIR $HOME/aria2
 
